@@ -69,5 +69,14 @@ function grilleJeu() {
     console.log(`${label} ${row.trim()}`);
   }
 }
-
-grilleJeu();
+ function tirer(ligne: number, column:number):boolean{
+    if (grilleBateaux[ligne]![column] === "B"){
+        grilleBateaux[ligne]![column] = "💣"
+        return true;
+    }else if(grilleBateaux[ligne]![column] ===" "){
+        grilleBateaux[ligne]![column] = "🌊"
+        return false;    
+    }
+    return false;
+ }
+ 
