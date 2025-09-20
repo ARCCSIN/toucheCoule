@@ -90,3 +90,42 @@ function cestGagne(): boolean {
   }
   return true;
 }
+grilleJeu();
+
+function jouer() {
+  grilleJeu();
+  readl.question("Entre des coords (Ex : A3, J7) : ", (input: string) => {
+    const txt = input.trim().toUpperCase();
+    const letter = txt[0];
+    const numberPart = txt.slice(1);
+    const num = parseInt(numberPart, 10);
+
+    if (!letter || isNaN(num)) {
+      console.log("pas le bon format (ex: A3)");
+      return jouer();
+    }
+    const column = letter.charCodeAt(0) - 65;
+    const ligne = num - 1;
+
+    if (column < 0 || column >= size || ligne < 0 || ligne >= size) {
+      console.log("Hors de la grille");
+      return jouer();
+    }
+    const tir = tirer(ligne, column);
+    if (tir === true) {
+      console.log("💥 Touché !");
+    } else {
+      console.log("🌊 Raté !");
+    }
+    grilleJeu();
+
+    if (cestGagne()) {
+      console.log("GG // Tu as éliminé toute la flotte ennemie");
+      readl.close();
+    } else {
+      jouer();
+    }
+  });
+}
+console.log(" ___ Bienvenue dans le jeu du touché coulé ___");
+jouer();
