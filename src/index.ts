@@ -10,6 +10,8 @@ const grilleBateaux: string[][] = Array.from({ length: size }, () =>
   Array(size).fill(" ")
 );
 
+let coups = 0;
+
 function placerBateauRandom(taille: number) {
   let placed = false;
 
@@ -65,11 +67,13 @@ function grilleJeu() {
       const bateauCache = cell === "B" ? " " : cell;
       row += bateauCache + " ";
     }
+
     const label = (ligne + 1).toString().padStart(2, " ");
     console.log(`${label} ${row}`);
   }
 }
 function tirer(ligne: number, column: number): boolean {
+  coups++;
   if (grilleBateaux[ligne]![column] === "B") {
     grilleBateaux[ligne]![column] = "X";
     return true;
@@ -90,7 +94,6 @@ function cestGagne(): boolean {
   }
   return true;
 }
-
 
 function jouer() {
   grilleJeu();
@@ -120,7 +123,7 @@ function jouer() {
     grilleJeu();
 
     if (cestGagne()) {
-      console.log("GG // Tu as éliminé toute la flotte ennemie");
+      console.log(`GG // Tu as éliminé toute la flotte en  ${coups} coups.`);
       readl.close();
     } else {
       jouer();
