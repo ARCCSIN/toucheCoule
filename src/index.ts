@@ -55,3 +55,19 @@ function genererFlotte() {
   placerBateauRandom(6);
 }
 genererFlotte();
+
+function grilleJeu() {
+  console.log("  A B C D E F G H I J");
+  for (let ligne = 0; ligne < size; ligne++) {
+    let row = "";
+    for (let column = 0; column < size; column++) {
+      const cell = grilleBateaux[ligne]![column];
+      const bateauCache = cell === "B" ? " " : cell;
+      row += bateauCache + " ";
+    }
+    const label = (ligne + 1).toString().padStart(2, " ");
+    console.log(`${label} ${row.trim()}`);
+  }
+}
+
+grilleJeu();
