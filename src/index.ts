@@ -57,7 +57,7 @@ function genererFlotte() {
 genererFlotte();
 
 function grilleJeu() {
-  console.log("  A B C D E F G H I J");
+  console.log("   A B C D E F G H I J");
   for (let ligne = 0; ligne < size; ligne++) {
     let row = "";
     for (let column = 0; column < size; column++) {
@@ -71,10 +71,10 @@ function grilleJeu() {
 }
 function tirer(ligne: number, column: number): boolean {
   if (grilleBateaux[ligne]![column] === "B") {
-    grilleBateaux[ligne]![column] = "💣";
+    grilleBateaux[ligne]![column] = "X";
     return true;
   } else if (grilleBateaux[ligne]![column] === " ") {
-    grilleBateaux[ligne]![column] = "🌊";
+    grilleBateaux[ligne]![column] = "O";
     return false;
   }
   return false;
@@ -90,7 +90,7 @@ function cestGagne(): boolean {
   }
   return true;
 }
-grilleJeu();
+
 
 function jouer() {
   grilleJeu();
