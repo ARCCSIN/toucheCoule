@@ -69,14 +69,24 @@ function grilleJeu() {
     console.log(`${label} ${row.trim()}`);
   }
 }
- function tirer(ligne: number, column:number):boolean{
-    if (grilleBateaux[ligne]![column] === "B"){
-        grilleBateaux[ligne]![column] = "💣"
-        return true;
-    }else if(grilleBateaux[ligne]![column] ===" "){
-        grilleBateaux[ligne]![column] = "🌊"
-        return false;    
-    }
+function tirer(ligne: number, column: number): boolean {
+  if (grilleBateaux[ligne]![column] === "B") {
+    grilleBateaux[ligne]![column] = "💣";
+    return true;
+  } else if (grilleBateaux[ligne]![column] === " ") {
+    grilleBateaux[ligne]![column] = "🌊";
     return false;
- }
- 
+  }
+  return false;
+}
+
+function cestGagne(): boolean {
+  for (let ligne = 0; ligne < size; ligne++) {
+    for (let column = 0; column < size; column++) {
+      if (grilleBateaux[ligne]![column] === "B") {
+        return false;
+      }
+    }
+  }
+  return true;
+}
