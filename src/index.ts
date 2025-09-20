@@ -66,7 +66,7 @@ function grilleJeu() {
       row += bateauCache + " ";
     }
     const label = (ligne + 1).toString().padStart(2, " ");
-    console.log(`${label} ${row.trim()}`);
+    console.log(`${label} ${row}`);
   }
 }
 function tirer(ligne: number, column: number): boolean {
